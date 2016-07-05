@@ -119,7 +119,6 @@ class BdbbackuprestoreController extends Controller
                     $data_string .= "INSERT INTO `$tableName` (`$items`) VALUES" . rtrim($values, ",") . ";" . PHP_EOL;
                 }
             }
-
             if ($data_string == '')
                 return array(true, 'function getData success');
             if ($this->fp) {
@@ -228,14 +227,14 @@ class BdbbackuprestoreController extends Controller
             }
         }
         foreach ($tables as $tableName) {
-            list($res, $info) = $this->getColumns($tableName);
-            if (!$res) {
-                $message['status'] = $res;
-                $message['message'] = $info;
-                echo json_encode($message);
-                Yii::error(json_encode($message), "error");
-                return;
-            }
+            list($res, $info) = $this->getData($tableName);
+//            if (!$res) {
+//                $message['status'] = $res;
+//                $message['message'] = $info;
+//                echo json_encode($message);
+//                Yii::error(json_encode($message), "error");
+//                return;
+//            }
         }
         $this->EndBackup();
         //获取备份信息存入书库

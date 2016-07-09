@@ -58,7 +58,7 @@ class UniAccount extends \yii\db\ActiveRecord
             $this->setAttribute($key, $item);
         }
         if(!$this->save()){
-            Yii::error(json_encode($this->getErrors()),"xiaohei");
+            Yii::error(json_encode($this->getErrors()), "error");
             return array('status' => 101);
         }else{
             return array('status' => 100, 'message' => $this->attributes['uniacid']);

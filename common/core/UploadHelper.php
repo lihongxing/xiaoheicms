@@ -195,8 +195,8 @@ class UploadHelper {//类定义开始
                 //保存上传文件
                 if(!$this->save($file)) return false;
                 if(function_exists($this->hashType)) {
-                    $fun =  $this->hashType;
-                    $file['hash']   =  $fun($this->autoCharset($file['savepath'].$file['savename'],'utf-8','gbk'));
+                    //$fun =  $this->hashType;
+                    $file['hash'] = $this->hashType($this->autoCharset($file['savepath'] . $file['savename'], 'utf-8', 'gbk'));
                 }
                 //上传成功后保存文件信息，供其他地方调用
                 unset($file['tmp_name'],$file['error']);
@@ -264,8 +264,8 @@ class UploadHelper {//类定义开始
                 //保存上传文件
                 if(!$this->save($file)) return false;
                 if(function_exists($this->hashType)) {
-                    $fun =  $this->hashType;
-                    $file['hash']   =  $fun($this->autoCharset($file['savepath'].$file['savename'],'utf-8','gbk'));
+                    //$fun =  $this->hashType;
+                    $file['hash'] = $this->hashType($this->autoCharset($file['savepath'] . $file['savename'], 'utf-8', 'gbk'));
                 }
                 unset($file['tmp_name'],$file['error']);
                 $info[] = $file;
@@ -344,13 +344,13 @@ class UploadHelper {//类定义开始
      * @return string
      */
     private function getSaveName($filename) {
-        $rule = $this->saveRule;
+        //$rule = $this->saveRule;
         if(empty($rule)) {//没有定义命名规则，则保持文件名不变
             $saveName = $filename['name'];
         }else {
             if(function_exists($rule)) {
                 //使用函数生成一个唯一文件标识号
-                $saveName = $rule().".".$filename['extension'];
+                $saveName = $this->saveRule() . "." . $filename['extension'];
             }else {
                 //使用给定的文件名作为标识号
                 $saveName = $rule.".".$filename['extension'];

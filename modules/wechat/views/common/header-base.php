@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>微赞 - 公众平台自助引擎 -  Powered by 012WZ.COM</title>
+	<title>xiaoheicms</title>
 	<meta name="keywords" content="微信,微信公众平台" />
 	<meta name="description" content="分销" />
 	<link rel="shortcut icon" href="/resource/images/global/wechat.jpg" />
